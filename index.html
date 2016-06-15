@@ -20,21 +20,23 @@
           <form id="player-setup-1" class="center-block">
             <label for="player-1-name">Player 1 Name</label>
             <input type="text" class="player-1-name">
+            <button type="submit" class="btn btn-sm btn-player-name-input">+</button>
           </form>
         </div>
         <div class="col-sm-4 col-lg-2 text-center">
-          <button type="button" class="btn btn-sm btn-get-rollin" onclick="submitForms()">Get Rollin</button>
+          <button type="button" class="btn btn-sm btn-get-rollin">Get Rollin</button>
         </div>
         <div class="col-sm-4 col-lg-2 text-center">
           <form id="player-setup-2" class="center-block">
             <label for="player-2-name">Player 2 Name</label>
             <input type="text" class="player-2-name">
+            <button type="submit" class="btn btn-sm btn-player-name-input">+</button>
           </form>
         </div>
       </div>
       <div class="row game-interface">
         <div class="col-sm-4 text-center">
-          <h3></h3>
+          <h3 class="output-player-1-name"></h3>
           <div class="player-score">
           </div>
           <ol class="player-1-history">
@@ -45,7 +47,7 @@
           <button class="btn btn-sm btn-feed-the-pig">Feed the Pig</button>
         </div>
         <div class="col-sm-4 text-center">
-          <h3></h3>
+          <h3 class="output-player-2-name"></h3>
           <div class="player-score">
           </div>
           <ol class="player-2-history">

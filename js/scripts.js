@@ -34,16 +34,17 @@ Player.prototype.totalScore = function() {
 }
 
 //user interface logic
-$(document).ready(function(event) {
-  event.preventDefault;
-  submitForms = function() {
-      document.getElementById("player-setup-1").submit(function() {
-        var player1 = $("input.player-1-name").val();
-        pigPlayer = new Player(player1)
-      });
-      document.getElementById("player-setup-2").submit(function() {
-        var player2 = $("input.player-2-name").val();
-        pigPlayer = new Player(player2)
-      });
-  };
+$(document).ready(function() {
+  $("form#player-setup-1").submit(function(event) {
+    event.preventDefault();
+    var player1 = $("input.player-1-name").val();
+    // pigPlayer = new Player(player1)
+    $("h3.output-player-1-name").text(player1);
+  });
+  $("form#player-setup-2").submit(function(event) {
+    event.preventDefault();
+    var player2 = $("input.player-2-name").val();
+    // pigPlayer = new Player(player2)
+    $("h3.output-player-2-name").text(player2);
+  });
 });
