@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Pig Dice</title>
+  </head>
+  <body>
+    <div class="containter">
+      <div class="row">
+        <div class="col-sm-12">
+          <button class="btn btn-lg btn-new-game center-block">New Game</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-lg-2 col-lg-offset-3 text-center">
+          <form id="player-setup-1" class="center-block">
+            <label for="player-1-name">Player 1 Name</label>
+            <input type="text" class="player-1-name">
+          </form>
+        </div>
+        <div class="col-sm-4 col-lg-2 text-center">
+          <button type="button" class="btn btn-sm btn-get-rollin" onclick="submitForms()">Get Rollin</button>
+        </div>
+        <div class="col-sm-4 col-lg-2 text-center">
+          <form id="player-setup-2" class="center-block">
+            <label for="player-2-name">Player 2 Name</label>
+            <input type="text" class="player-2-name">
+          </form>
+        </div>
+      </div>
+      <div class="row game-interface">
+        <div class="col-sm-4 text-center">
+          <h3></h3>
+          <div class="player-score">
+          </div>
+          <ol class="player-1-history">
+          </ol>
+        </div>
+        <div class="col-sm-4 text-center">
+          <button class="btn btn-sm btn-roll-dice">Roll</button>
+          <button class="btn btn-sm btn-feed-the-pig">Feed the Pig</button>
+        </div>
+        <div class="col-sm-4 text-center">
+          <h3></h3>
+          <div class="player-score">
+          </div>
+          <ol class="player-2-history">
+          </ol>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
