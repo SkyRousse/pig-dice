@@ -2,33 +2,44 @@
 var active;
 var roundScore = 0;
 var gameScore = 0;
+var diceRoll;
 
 function Player(name, active) {
   this.playerName = name;
   this.activePlayer = active;
+  this.diceRolls = [];
   this.turnScore = 0;
   this.totalScore = 0;
 };
 
-var diceRoll = function() {
-  var rollNumber = Math.floor((Math.random() * 6) + 1);
-  return rollNumber;
-};
+// var diceRoll = function() {
+//   var rollNumber = Math.floor((Math.random() * 6) + 1);
+//   return rollNumber;
+// };
 
-var getCurrentPlayer = function() {
-  if(this.activePlayer === true) {
-    currentplayer = this.activePlayer
-  }
-};
+// var getCurrentPlayer = function() {
+//   if(player1.activePlayer === true) {
+//     player1.activePlayer = false;
+//     player2.activePlayer = true;
+//   } else {
+//     player2.activePlayer = false;
+//     player1.activePlayer = true;
+//   }
+// };
 
 //idea: add players to an array to loop through
-Player.prototype.turnScore = function() {
+Player.prototype.findScore = function() {
 //while loop to check active is true execute code for turnScore
-  if(diceRoll !== 1) {
-    roundScore += diceRoll;
+  // debugger;
+  var rollNumber = Math.floor((Math.random() * 6) + 1);
+  this.diceRolls.push(rollNumber);
+  // return rollNumber;
+
+  if(rollNumber != 1) {
+    roundScore = roundScore += rollNumber;
   } else {
-    this.activePlayer === false;
-    roundScore === 0;
+    this.activePlayer = false;
+    roundScore = 0;
   }
   this.turnScore = roundScore;
 };
@@ -42,6 +53,9 @@ Player.prototype.totalScore = function() {
 $(document).ready(function() {
   var player1;
   var player2;
+  var showScore;
+  var rollNumber;
+  // var feedThePig;
   $("form#player-setup-1").submit(function(event) {
     event.preventDefault();
     var player1Name = $("input.player-1-name").val();
@@ -57,15 +71,26 @@ $(document).ready(function() {
   });
 
   $("button.btn-roll-dice").click(function() {
-    var rollNumber = diceRoll();
-    console.log(rollNumber);
-    var currentplayer = getCurrentPlayer();
+    // rollNumber = diceRoll();
+    player1.findScore();
     // Player.turnScore(diceRoll);
-    $("h3.output-dice-roll").text(rollNumber);
-    $("h3.output-turn-total").text(rollNumber);
+    $("h3.output-dice-roll").text(player1.diceRolls[player1.diceRolls.length - 1]);
+    $("h3.output-turn-total").text(player1.turnScore);
   });
   $("button.btn-feed-the-pig").click(function() {
-    Player.totalScore(Player.turnScore());
+    // var currentPlayer = getCurrentPlayer();
+    // Player.totalScore(Player.turnScore());
+    // var feedThePig = diceRolls();
+    // player1.findScore();
+    if(player1.activePlayer === true) {
+      $("div.player-1-score").text(feedThePig);
+      player1.activePlayer = false;
+      player2.activePlayer = true;
+    } else {
+      $("div.player-2-score").text(feedThePig);
+      player2.activePlayer = false;
+      player1.activePlayer = true;
+    }
   });
 
 });
