@@ -10,27 +10,13 @@ function Player(name, active) {
   this.diceRolls = [];
   this.turnScore = 0;
   this.totalScore = 0;
-
 };
-
-// var getCurrentPlayer = function() {
-//   if(player1.activePlayer === true) {
-//     player1.activePlayer = false;
-//     player2.activePlayer = true;
-//   } else {
-//     player2.activePlayer = false;
-//     player1.activePlayer = true;
-//   }
-// };
 
 //idea: add players to an array to loop through
 Player.prototype.findScore = function() {
-//while loop to check active is true execute code for turnScore
-  // debugger;
   var rollNumber = Math.floor((Math.random() * 6) + 1);
   this.diceRolls.push(rollNumber);
 
-   roundScore = 0;
   if(rollNumber != 1) {
     roundScore = roundScore += rollNumber;
   } else {
@@ -47,28 +33,21 @@ Player.prototype.findScore = function() {
 };
 
 Player.prototype.findTotal = function() {
-  debugger;
   gameScore = this.totalScore += roundScore;
   this.totalScore = gameScore;
+  if(gameScore >= 100) {
+    alert("Congrats you win!");
+  }
 };
 
 var feedPig = function() {
   $("h3.output-dice-roll").text("");
   $("h3.output-turn-total").text("0");
-  var roundScore = 0;
-  // if(player1.activePlayer === true) {
-  //   player1.activePlayer = false;
-  //   player2.activePlayer = true;
-  // } else {
-  //   player2.activePlayer = false;
-  //   player1.activePlayer = true;
-  // }
+  this.roundScore = 0;
 };
 
 //user interface logic
 $(document).ready(function() {
-  // var player1;
-  // var player2;
 
   $("form#player-setup-1").submit(function(event) {
     event.preventDefault();
@@ -99,10 +78,6 @@ $(document).ready(function() {
 
   });
   $("button.btn-feed-the-pig").click(function() {
-    // var currentPlayer = getCurrentPlayer();
-    // Player.totalScore(Player.turnScore());
-    // var feedThePig = diceRolls();
-    // player1.findScore();
     if(player1.activePlayer === true) {
       player1.findTotal();
     } else if (player2.activePlayer === true){
