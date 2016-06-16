@@ -10,12 +10,8 @@ function Player(name, active) {
   this.diceRolls = [];
   this.turnScore = 0;
   this.totalScore = 0;
-};
 
-// var diceRoll = function() {
-//   var rollNumber = Math.floor((Math.random() * 6) + 1);
-//   return rollNumber;
-// };
+};
 
 // var getCurrentPlayer = function() {
 //   if(player1.activePlayer === true) {
@@ -33,29 +29,47 @@ Player.prototype.findScore = function() {
   // debugger;
   var rollNumber = Math.floor((Math.random() * 6) + 1);
   this.diceRolls.push(rollNumber);
-  // return rollNumber;
 
+   roundScore = 0;
   if(rollNumber != 1) {
     roundScore = roundScore += rollNumber;
   } else {
-    this.activePlayer = false;
+    if(player1.activePlayer === true) {
+      player1.activePlayer = false;
+      player2.activePlayer = true;
+    } else {
+      player2.activePlayer = false;
+      player1.activePlayer = true;
+    }
     roundScore = 0;
   }
   this.turnScore = roundScore;
 };
 
-Player.prototype.totalScore = function() {
-  gameScore += roundScore;
-  this.totalScore === gameScore;
+Player.prototype.findTotal = function() {
+  debugger;
+  gameScore = this.totalScore += roundScore;
+  this.totalScore = gameScore;
+};
+
+var feedPig = function() {
+  $("h3.output-dice-roll").text("");
+  $("h3.output-turn-total").text("0");
+  var roundScore = 0;
+  // if(player1.activePlayer === true) {
+  //   player1.activePlayer = false;
+  //   player2.activePlayer = true;
+  // } else {
+  //   player2.activePlayer = false;
+  //   player1.activePlayer = true;
+  // }
 };
 
 //user interface logic
 $(document).ready(function() {
-  var player1;
-  var player2;
-  var showScore;
-  var rollNumber;
-  // var feedThePig;
+  // var player1;
+  // var player2;
+
   $("form#player-setup-1").submit(function(event) {
     event.preventDefault();
     var player1Name = $("input.player-1-name").val();
@@ -71,11 +85,18 @@ $(document).ready(function() {
   });
 
   $("button.btn-roll-dice").click(function() {
-    // rollNumber = diceRoll();
-    player1.findScore();
-    // Player.turnScore(diceRoll);
-    $("h3.output-dice-roll").text(player1.diceRolls[player1.diceRolls.length - 1]);
-    $("h3.output-turn-total").text(player1.turnScore);
+    if(player1.activePlayer === true) {
+      player1.findScore();
+      $("h3.output-dice-roll").text(player1.diceRolls[player1.diceRolls.length - 1]);
+      $("h3.output-turn-total").text(player1.turnScore);
+    } else if (player2.activePlayer === true){
+      player2.findScore();
+      $("h3.output-dice-roll").text(player2.diceRolls[player2.diceRolls.length - 1]);
+      $("h3.output-turn-total").text(player2.turnScore);
+    } else {
+
+    }
+
   });
   $("button.btn-feed-the-pig").click(function() {
     // var currentPlayer = getCurrentPlayer();
@@ -83,11 +104,20 @@ $(document).ready(function() {
     // var feedThePig = diceRolls();
     // player1.findScore();
     if(player1.activePlayer === true) {
-      $("div.player-1-score").text(feedThePig);
+      player1.findTotal();
+    } else if (player2.activePlayer === true){
+      player2.findTotal();
+    } else {
+
+    }
+    feedPig();
+
+    if(player1.activePlayer === true) {
+      $("div.player-1-score").text(player1.totalScore);
       player1.activePlayer = false;
       player2.activePlayer = true;
     } else {
-      $("div.player-2-score").text(feedThePig);
+      $("div.player-2-score").text(player2.totalScore);
       player2.activePlayer = false;
       player1.activePlayer = true;
     }
