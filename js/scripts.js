@@ -21,13 +21,16 @@ Player.prototype.findScore = function() {
     roundScore = roundScore += rollNumber;
   } else {
     if(player1.activePlayer === true) {
+      $("ol.player-1-history").append("<li>" + this.turnScore + "</li>");
       player1.activePlayer = false;
       player2.activePlayer = true;
     } else {
+      $("ol.player-2-history").append("<li>" + this.turnScore + "</li>");
       player2.activePlayer = false;
       player1.activePlayer = true;
     }
     roundScore = 0;
+
   }
   this.turnScore = roundScore;
 };
@@ -80,8 +83,10 @@ $(document).ready(function() {
   $("button.btn-feed-the-pig").click(function() {
     if(player1.activePlayer === true) {
       player1.findTotal();
+      $("ol.player-1-history").append("<li>" + player1.turnScore + "</li>");
     } else if (player2.activePlayer === true){
       player2.findTotal();
+      $("ol.player-2-history").append("<li>" + player2.turnScore + "</li>");
     } else {
 
     }

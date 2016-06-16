@@ -13,3 +13,7 @@
 .game-interface {
   margin-top: 50px;
 }
+
+.player-1-history li::before, .player-2-history li::before{
+  content: "Round total = ";
+}
