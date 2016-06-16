@@ -21,11 +21,11 @@ Player.prototype.findScore = function() {
     roundScore = roundScore += rollNumber;
   } else {
     if(player1.activePlayer === true) {
-      $("ol.player-1-history").append("<li>" + this.turnScore + "</li>");
+      $("ol.player-1-history").append("<li>" + 0 + "</li>");
       player1.activePlayer = false;
       player2.activePlayer = true;
     } else {
-      $("ol.player-2-history").append("<li>" + this.turnScore + "</li>");
+      $("ol.player-2-history").append("<li>" + 0 + "</li>");
       player2.activePlayer = false;
       player1.activePlayer = true;
     }
