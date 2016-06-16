@@ -22,10 +22,14 @@ Player.prototype.findScore = function() {
   } else {
     if(player1.activePlayer === true) {
       $("ol.player-1-history").append("<li>" + 0 + "</li>");
+      $(".player-2-stats").css("background-color", "rgb(217, 237, 247)");
+      $(".player-1-stats").css("background-color", "rgba(217, 237, 247, .25)");
       player1.activePlayer = false;
       player2.activePlayer = true;
     } else {
       $("ol.player-2-history").append("<li>" + 0 + "</li>");
+      $(".player-1-stats").css("background-color", "rgb(217, 237, 247)");
+      $(".player-2-stats").css("background-color", "rgba(217, 237, 247, .25)");
       player2.activePlayer = false;
       player1.activePlayer = true;
     }
@@ -84,9 +88,13 @@ $(document).ready(function() {
     if(player1.activePlayer === true) {
       player1.findTotal();
       $("ol.player-1-history").append("<li>" + player1.turnScore + "</li>");
+      $(".player-2-stats").css("background-color", "rgb(217, 237, 247)");
+      $(".player-1-stats").css("background-color", "rgba(217, 237, 247, .25)");
     } else if (player2.activePlayer === true){
       player2.findTotal();
       $("ol.player-2-history").append("<li>" + player2.turnScore + "</li>");
+      $(".player-1-stats").css("background-color", "rgb(217, 237, 247)");
+      $(".player-2-stats").css("background-color", "rgba(217, 237, 247, .25)");
     } else {
 
     }

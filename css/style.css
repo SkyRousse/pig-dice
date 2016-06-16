@@ -14,6 +14,19 @@
   margin-top: 50px;
 }
 
-.player-1-history li::before, .player-2-history li::before{
-  content: "Round total = ";
+.player-1-history li::before, .player-2-history li::before {
+  content: "Round = ";
+}
+
+ol {
+  list-style-position: inside;
+  padding: 0;
+}
+
+.player-1-score, .player-2-score {
+  border: 1px solid black;
+  padding: 30px;
+  display: inline-block;
+  font-size: 70px;
+  min-width: 50%;
 }
