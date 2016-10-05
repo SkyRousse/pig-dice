@@ -35,7 +35,7 @@ None yet. Still work in progress
 ## Support and contact details
 If you have questions comments or concerns you can contact us at:
 Marty: <a href="mailto:mfitchen@gmail.com">mfitchen@gmail.com</a>
-Sky: <a href="mailto:skyrousse@gmail.com">skyrousse@gmail.com</a>
+Sky: skyrousse@gmail.com 
 
 ## Technologies Used
 
